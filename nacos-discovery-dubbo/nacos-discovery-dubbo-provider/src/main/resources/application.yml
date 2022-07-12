@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: true
+dubbo:
+  scan:
+    base-packages: com.jztx.gm.demo
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://localhost
+  application:
+    qos-enable: true
+  cloud:
+    subscribed-services: /
+
+    # 服务监控检查
+endpoints:
+  dubbo:
+    enabled: true
+management:
+  health:
+    dubbo:
+      status:
+        defaults: memory
+        extras: threadpool
+  endpoints:
+    web:
+      exposure:
+        include: "*"
